@@ -38,7 +38,7 @@ public class ApiObjectMapper extends ObjectMapper {
 
     // Allow JAX-B annotations.
     setAnnotationIntrospector(
-        new AnnotationIntrospector.Pair(
+        AnnotationIntrospector.pair(
             getSerializationConfig().getAnnotationIntrospector(),
             new JaxbAnnotationIntrospector()));
 
