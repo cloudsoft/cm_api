@@ -2,15 +2,41 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <packaging>jar</packaging>
-  <groupId>com.cloudera.api</groupId>
+  <groupId>io.cloudsoft.cloudera.api</groupId>
   <artifactId>cloudera-manager-api</artifactId>
   <name>Cloudera Manager API</name>
-  <version>5.2.0</version>
+  <version>5.2.0-cloudsoft.1</version>
+
+  <url>http://cloudera.github.io/cm_api</url>
+
+  <description>
+    Cloudera API (adapting upstream dependencies, for compatibility with Apache Brooklyn)
+  </description>
+
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <developers>
+    <developer>
+      <name>Cloudera</name>
+    </developer>
+  </developers>
+
+  <scm>
+    <connection>scm:git:git://github.com/ZaidM/cm_api.git</connection>
+    <developerConnection>scm:git:git@github.com:ZaidM/cm_api.git</developerConnection>
+    <url>https://github.com/ZaidM/cm_api</url>
+  </scm>
 
   <properties>
     <cxf.version>2.7.5</cxf.version>
-    <guava.version>14.0</guava.version>
-    <jackson2.version>2.1.0</jackson2.version>
+    <guava.version>17.0</guava.version>
+    <jackson2.version>2.4.2</jackson2.version>
     <joda.version>2.1</joda.version>
     <junit.version>4.8.2</junit.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -111,6 +137,50 @@
               </execution>
             </executions>
           </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>sonatype-nexus-repo</id>
+      <activation>
+        <property>
+          <name>brooklyn.deployTo</name>
+          <value>sonatype</value>
+        </property>
+      </activation>
+      <distributionManagement>
+        <repository>
+          <id>sonatype-nexus-staging</id>
+          <name>Nexus Release Repository</name>
+          <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+        <snapshotRepository>
+          <id>sonatype-nexus-snapshots</id>
+          <name>Sonatype Nexus Snapshots</name>
+          <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+        </snapshotRepository>
+      </distributionManagement>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <version>1.1</version>
+            <executions>
+              <execution>
+                <id>sign-artifacts</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+<!--
+          <plugin>
+            <artifactId>maven-javadoc-plugin</artifactId>
+          </plugin>
+-->
         </plugins>
       </build>
     </profile>

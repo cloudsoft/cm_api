@@ -1,0 +1,9 @@
+For brooklyn compatibility, the following changes have been made:
+
+* Upgrade guava version to 17.0
+* Upgrade jackson version to 2.4.2
+* Change maven id to io.cloudsoft.cloudera.api, so it can be published.
+  Also changes version to 5.2.0-cloudsoft.1
+* Adds profile for deploying to maven (including plugin for gpg signing).
+* Makes pom.xml compliant with sonatype: adds url, description, license, developers and scm
+* Published to Sonatype
