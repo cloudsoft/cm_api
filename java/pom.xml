@@ -34,7 +34,7 @@
   </scm>
 
   <properties>
-    <cxf.version>2.7.5</cxf.version>
+    <cxf.version>2.7.14</cxf.version>
     <guava.version>17.0</guava.version>
     <jackson2.version>2.4.2</jackson2.version>
     <joda.version>2.1</joda.version>
@@ -82,7 +82,7 @@
           <plugin>
             <groupId>org.codehaus.enunciate</groupId>
             <artifactId>maven-enunciate-cxf-plugin</artifactId>
-            <version>1.27</version>
+            <version>1.28</version>
             <configuration>
               <configFile>enunciate.xml</configFile>
               <docsDir>${project.build.directory}/classes/restapi</docsDir>
